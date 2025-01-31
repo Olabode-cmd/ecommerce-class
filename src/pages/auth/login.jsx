@@ -7,6 +7,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const [show, setShow] = useState(false);
 
@@ -14,7 +16,40 @@ const Login = () => {
       setShow(!show);
     };
 
-    
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+
+      const formData = {
+      email: email,
+      password: password
+    }
+
+      try {
+        const response = await fetch(
+          "https://inevitable-helaina-nilvfgfgfhujkiki-38773413.koyeb.app/user/login/",
+          {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const data = await response.json();
+        localStorage.setItem('accessToken', data.access);
+        sessionStorage.setItem('accessToken', data.access);
+        alert(`Login successful: Welcome ${data.user.username}`)
+      } catch (error) {
+        setError(error)
+        console.error(error)
+        alert(error)
+      } finally {
+        setLoading(false);
+      }
+
+    }
 
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
@@ -30,11 +65,13 @@ const Login = () => {
               Welcome back! Please enter your details.
             </p>
 
-            <form className="mt-8 space-y-4">
+            <form className="mt-8 space-y-4" onSubmit={handleLogin}>
               <div className="input-group">
                 <label className="text-sm">Email</label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="mt-2 px-3 py-2.5 rounded-lg border border-gray-300 w-full"
                 />
               </div>
@@ -50,6 +87,8 @@ const Login = () => {
                 <input
                   type={show ? "password" : "text"}
                   className="mt-2 px-3 py-2.5 rounded-lg border border-gray-300 w-full"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 {show ? (
                   <FaEyeSlash onClick={switchShow} className="absolute right-4 top-10 text-gray-400 w-6 cursor-pointer" />
@@ -58,8 +97,8 @@ const Login = () => {
                 )}
               </div>
 
-              <button className="bg-purple-500 text-white px-3 py-3 hover:bg-purple-700 w-full rounded-lg">
-                Login
+              <button type="submit" className="bg-purple-500 text-white px-3 py-3 hover:bg-purple-700 w-full rounded-lg">
+                {loading ? "Loading..." : "Login"}
               </button>
 
               <div className="mt-4">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router';
 import {
   Dialog,
   DialogPanel,
@@ -96,7 +97,7 @@ const Navbar = () => {
             </button>
           </div>
           <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-            <Popover className="relative">
+            {/* <Popover className="relative">
               <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900">
                 Product
                 <ChevronDownIcon
@@ -150,17 +151,17 @@ const Navbar = () => {
                   ))}
                 </div>
               </PopoverPanel>
-            </Popover>
+            </Popover> */}
 
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
-              Features
-            </a>
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
+            <Link to="/about" className="text-sm/6 font-semibold text-gray-900">
+              About
+            </Link>
+            <Link to="/" className="text-sm/6 font-semibold text-gray-900">
               Marketplace
-            </a>
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
+            </Link>
+            <Link to="/" className="text-sm/6 font-semibold text-gray-900">
               Company
-            </a>
+            </Link>
           </PopoverGroup>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-2">
 
