@@ -7,7 +7,7 @@ const UserCard = (props) => {
         <div className="flex flex-col">
           <div className="img-div h-[300px] w-full object-cover rounded-lg overflow-hidden">
             <img
-            //   src={Bg}
+              // src={Bg}
               src={props.image}
               className="w-full h-full object-cover"
               alt="Image"

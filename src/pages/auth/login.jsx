@@ -3,9 +3,10 @@ import Authbg from '../../assets/images/auth-bg.jpg'
 import Logo from '../../assets/images/yolo-logo.png'
 import { Link } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+// git pull origin main
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -20,34 +21,45 @@ const Login = () => {
       e.preventDefault();
       setLoading(true);
 
-      const formData = {
-      email: email,
-      password: password
-    }
+    //   const formData = {
+    //   username: username,
+    //   password: password
+    // }
 
-      try {
-        const response = await fetch(
-          "https://inevitable-helaina-nilvfgfgfhujkiki-38773413.koyeb.app/user/login/",
-          {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+    fetch("https://dummyjson.com/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        expiresInMins: 30, // optional, defaults to 60
+      }),
+      credentials: "include", // Include cookies (e.g., accessToken) in the request
+    })
+      .then((res) => res.json())
+      .then(console.log);
 
-        const data = await response.json();
-        localStorage.setItem('accessToken', data.access);
-        sessionStorage.setItem('accessToken', data.access);
-        alert(`Login successful: Welcome ${data.user.username}`)
-      } catch (error) {
-        setError(error)
-        console.error(error)
-        alert(error)
-      } finally {
-        setLoading(false);
-      }
+      // try {
+      //   const response = await fetch("https://dummyjson.com/auth/login", {
+      //     method: "POST",
+      //     body: JSON.stringify(formData),
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   });
+
+      //   const data = await response;
+      //   localStorage.setItem('accessToken', data.accessToken);
+      //   sessionStorage.setItem('accessToken', data.accessToken);
+      //   alert(`Login successful: Welcome ${data.username}`);
+      //   console.log(data);
+      // } catch (error) {
+      //   setError(error)
+      //   console.error(error)
+      //   alert(error)
+      // } finally {
+      //   setLoading(false);
+      // }
 
     }
 
@@ -67,11 +79,11 @@ const Login = () => {
 
             <form className="mt-8 space-y-4" onSubmit={handleLogin}>
               <div className="input-group">
-                <label className="text-sm">Email</label>
+                <label className="text-sm">Email or Username</label>
                 <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="mt-2 px-3 py-2.5 rounded-lg border border-gray-300 w-full"
                 />
               </div>

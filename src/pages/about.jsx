@@ -67,7 +67,6 @@ const About = () => {
       </section>
 
       <div className="grid grid-cols-4 gap-6 px-4 md:px-16 mt-8">
-
         {fourUsers.map((user) => {
             // let firstName = user.firstName;
             // let lastName = user.lastName;
@@ -87,12 +86,16 @@ const About = () => {
       </div>
 
       {/* <div className="grid grid-cols-4 gap-6">
-                {products.map((product, index) => {
-                    <div key={index}>
-                        <img src={product.image} alt={`Product image ${index}`} />
-                    </div>
-                })}
-            </div> */}
+        {products.map((product) => (
+          <img
+            src={product.image}
+            alt={`Product image`}
+            className="max-w-full"
+          />
+        ))}
+      </div> */}
+
+      {/* <img src={products[2].image} alt={`Product image`} className="max-w-full" /> */}
     </div>
   );
 }

@@ -4,7 +4,7 @@ const HeaderTag = () => {
   return (
     <>
       <div>
-        <div className="bg-green-900 text-sm py-2">
+        <div className="bg-green-900 text-sm py-2 md:px-16">
           <div className="container flex items-center justify-between text-white mx-auto">
             {/* First Div */}
             <div className="flex items-center space-x-2">

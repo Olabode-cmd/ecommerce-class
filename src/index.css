@@ -6,3 +6,8 @@
 * {
     font-family: "Rubik", serif;
 }
+
+.market-bg {
+    background: url('assets/images/clothing1.jpg');
+    background-size: cover;
+}

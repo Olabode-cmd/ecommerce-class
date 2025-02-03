@@ -70,13 +70,13 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="bg-white">
+      <header className="bg-white px-4 md:px-10">
         <nav
           aria-label="Global"
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         >
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link to="/" className="-m-1.5 p-1.5">
               <img
                 alt=""
                 src={Logo}
@@ -84,7 +84,7 @@ const Navbar = () => {
                 className="w-[40px]"
               />
               <span className="sr-only">YOLO</span>
-            </a>
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -156,7 +156,7 @@ const Navbar = () => {
             <Link to="/about" className="text-sm/6 font-semibold text-gray-900">
               About
             </Link>
-            <Link to="/" className="text-sm/6 font-semibold text-gray-900">
+            <Link to="/marketplace" className="text-sm/6 font-semibold text-gray-900">
               Marketplace
             </Link>
             <Link to="/" className="text-sm/6 font-semibold text-gray-900">
@@ -171,9 +171,9 @@ const Navbar = () => {
               <CiSearch className="absolute right-2 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
             </div>
 
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
+            <Link to="/auth/login" className="text-sm/6 font-semibold text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+            </Link>
           </div>
         </nav>
         <Dialog
