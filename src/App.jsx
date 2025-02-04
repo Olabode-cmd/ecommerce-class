@@ -50,7 +50,7 @@ function App() {
       <HeaderTag />
       <Navbar />
 
-      <section className="container mx-auto">
+      <section className="w-full md:max-w-6xl mx-auto mb-16">
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 items-center bg-pink-100  rounded-lg px-4 pt-4">
           <div className="pl-10">
             <h1 className="text-5xl font-semibold">

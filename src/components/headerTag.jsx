@@ -5,7 +5,7 @@ const HeaderTag = () => {
     <>
       <div>
         <div className="bg-green-900 text-sm py-2 md:px-16">
-          <div className="container flex items-center justify-between text-white mx-auto">
+          <div className="container md:flex items-center justify-between text-white mx-auto hidden">
             {/* First Div */}
             <div className="flex items-center space-x-2">
               <MdOutlineLocalPhone />
@@ -18,7 +18,7 @@ const HeaderTag = () => {
             </div>
 
             {/* Third Div */}
-            <div className="flex items-center">
+            <div className="md:flex items-center hidden">
               <select className="border-none text-sm text-white px-2">
                 <option defaultValue="1" className="text-black">
                   Eng

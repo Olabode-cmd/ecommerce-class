@@ -159,8 +159,8 @@ const Navbar = () => {
             <Link to="/marketplace" className="text-sm/6 font-semibold text-gray-900">
               Marketplace
             </Link>
-            <Link to="/" className="text-sm/6 font-semibold text-gray-900">
-              Company
+            <Link to="/contact" className="text-sm/6 font-semibold text-gray-900">
+              Contact
             </Link>
           </PopoverGroup>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-2">
