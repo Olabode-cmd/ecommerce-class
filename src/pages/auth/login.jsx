@@ -3,15 +3,17 @@ import Authbg from '../../assets/images/auth-bg.jpg'
 import Logo from '../../assets/images/yolo-logo.png'
 import { Link } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router";
 // git pull origin main
 
 const Login = () => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const [show, setShow] = useState(false);
+    const router = useNavigate();
 
     const switchShow = () => {
       setShow(!show);
@@ -21,45 +23,45 @@ const Login = () => {
       e.preventDefault();
       setLoading(true);
 
-    //   const formData = {
-    //   username: username,
-    //   password: password
-    // }
+      const formData = {
+        email: email,
+        password: password
+      }
 
-    fetch("https://dummyjson.com/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-        expiresInMins: 30, // optional, defaults to 60
-      }),
-      credentials: "include", // Include cookies (e.g., accessToken) in the request
-    })
-      .then((res) => res.json())
-      .then(console.log);
+      try {
+        const response = await fetch(
+          "https://ideological-ardella-emekadefirst-f109542f.koyeb.app/api/v1user/auth/login",
+          // "https://dummyjson.com/auth/login",
+          {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+              "Content-Type": "application/json",
+              // "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
 
-      // try {
-      //   const response = await fetch("https://dummyjson.com/auth/login", {
-      //     method: "POST",
-      //     body: JSON.stringify(formData),
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   });
+        const data = await response.json();
 
-      //   const data = await response;
-      //   localStorage.setItem('accessToken', data.accessToken);
-      //   sessionStorage.setItem('accessToken', data.accessToken);
-      //   alert(`Login successful: Welcome ${data.username}`);
-      //   console.log(data);
-      // } catch (error) {
-      //   setError(error)
-      //   console.error(error)
-      //   alert(error)
-      // } finally {
-      //   setLoading(false);
-      // }
+        if (response.ok) {
+          console.log("Login successful:", data);
+          localStorage.setItem("accessToken", data.access_token);
+          localStorage.setItem("userId", data.data.id)
+          // sessionStorage.setItem("accessToken", data.access_token);
+
+          router("/dashboard");
+        } else {
+          console.error("Login failed:", data.message);
+          alert(data.message);
+        }
+      } catch (error) {
+        setError(error)
+        console.error(error)
+        alert(error)
+      } finally {
+        setLoading(false);
+      }
 
     }
 
@@ -82,8 +84,8 @@ const Login = () => {
                 <label className="text-sm">Email or Username</label>
                 <input
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="mt-2 px-3 py-2.5 rounded-lg border border-gray-300 w-full"
                 />
               </div>

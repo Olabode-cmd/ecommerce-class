@@ -1,15 +1,16 @@
 import { useEffect } from "react";
-import { useRouter } from 'react-router'
+import { useNavigate } from 'react-router'
 
 const Logout = () => {
-  const router = useRouter();
+  const router = useNavigate();
 
   useEffect(() => {
     const logout = async () => {
       await localStorage.removeItem("accessToken");
+      await localStorage.removeItem("userId");
 
       setTimeout(() => {
-        router.push("/login");
+        router("/auth/login");
       }, 1000);
     };
 

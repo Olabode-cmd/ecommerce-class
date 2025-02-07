@@ -5,8 +5,15 @@ import App from "./App.jsx";
 import About from "./pages/about.jsx";
 import Login from './pages/auth/login.jsx'
 import SignUp from "./pages/auth/signup.jsx";
+import Logout from './pages/auth/logout.jsx'
 import Marketplace from "./pages/marketplace.jsx";
 import Contact from "./pages/contact.jsx";
+
+// Layout
+import DashboardLayout from "./layout/dashboardlayout.jsx";
+
+// Dashboards
+import DashboardHome from "./pages/dashboard/index.jsx";
 
 const root = document.getElementById("root");
 
@@ -19,6 +26,12 @@ ReactDOM.createRoot(root).render(
       <Route path="/contact" element={<Contact />} />
       <Route path="/auth/login" element={<Login />} />
       <Route path="/auth/signup" element={<SignUp />} />
+      <Route path="/auth/logout" element={<Logout />} />
+
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<DashboardHome />} />
+        {/* Add other routes here */}
+      </Route>
     </Routes>
   </BrowserRouter>
 );
