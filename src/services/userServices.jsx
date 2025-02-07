@@ -6,6 +6,7 @@ const useUser = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // fetch data
     const fetchUserData = async () => {
       const token = localStorage.getItem("accessToken");
       const userId = localStorage.getItem("userId");
@@ -45,6 +46,7 @@ const useUser = () => {
     fetchUserData();
   }, []);
 
+  // export user
   return { user, loading, error };
 };
 

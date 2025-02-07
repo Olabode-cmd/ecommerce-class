@@ -20,18 +20,21 @@ const Login = () => {
     };
 
     const handleLogin = async (e) => {
+      // Prevent loading
       e.preventDefault();
-      setLoading(true);
+      setLoading(true); // initialize loading state
 
+      // create form data to be sent
       const formData = {
         email: email,
         password: password
       }
 
+      // try block
       try {
         const response = await fetch(
-          "https://ideological-ardella-emekadefirst-f109542f.koyeb.app/api/v1user/auth/login",
-          // "https://dummyjson.com/auth/login",
+          // "https://ideological-ardella-emekadefirst-f109542f.koyeb.app/api/v1user/auth/login",
+          "https://dummyjson.com/auth/login",
           {
             method: "POST",
             body: JSON.stringify(formData),
@@ -42,14 +45,17 @@ const Login = () => {
           }
         );
 
+        // set response to data
         const data = await response.json();
 
         if (response.ok) {
           console.log("Login successful:", data);
+
+          // store token and id to localstorage
           localStorage.setItem("accessToken", data.access_token);
           localStorage.setItem("userId", data.data.id)
-          // sessionStorage.setItem("accessToken", data.access_token);
 
+          // route to dashboard
           router("/dashboard");
         } else {
           console.error("Login failed:", data.message);
