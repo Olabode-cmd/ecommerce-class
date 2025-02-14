@@ -15,9 +15,9 @@ const DashboardHome = () => {
     let token = localStorage.getItem("accessToken")
 
     // check for token to redirect to login if it doesn't exist
-    if (!token) {
-        router('/auth/login')
-    }
+    // if (!token) {
+    //     router('/auth/login')
+    // }
 
     
     return (

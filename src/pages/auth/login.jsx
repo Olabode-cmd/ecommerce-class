@@ -68,7 +68,6 @@ const Login = () => {
       } finally {
         setLoading(false);
       }
-
     }
 
     return (
@@ -137,3 +136,16 @@ const Login = () => {
 }
 
 export default Login;
+
+// html
+// css
+// tailwind
+// event handlers
+// useState, useEffect,
+// components and props
+
+
+// PULL
+// git add .
+// git commit -m "updates"
+// git pull origin main

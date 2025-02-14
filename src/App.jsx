@@ -117,6 +117,7 @@ function App() {
                 <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6">
                   {fiveProducts.map((product) => (
                     <ProductCard
+                      id={product.id}
                       title={product.title}
                       image={product.thumbnail}
                       description={product.description}
@@ -142,6 +143,7 @@ function App() {
                 <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6">
                   {similarProducts.map((product) => (
                     <ProductCard
+                      id={product.id}
                       title={product.title}
                       image={product.thumbnail}
                       description={product.description}

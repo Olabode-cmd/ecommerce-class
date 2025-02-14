@@ -1,11 +1,12 @@
 import { FaRegHeart, FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 import Product from '../assets/images/product-1.jpg'
 
 const ProductCard = (props) => {
   return (
     <>
-      <div className="flex flex-col relative">
+      <Link to={`products/${props.id}`} className="flex flex-col relative">
         <div className="absolute top-2 right-3 bg-white px-2 py-2 rounded-full">
           <FaRegHeart />
         </div>
@@ -47,9 +48,23 @@ const ProductCard = (props) => {
             <p className="text-md font-medium">${props.price}</p>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };
 
 export default ProductCard;
+
+
+// DYNAMIC ROUTING STEP BY STEP
+
+//  1. PASS THE ID FROM THE PRODUCT PAGE id={product.id}
+//  2. GENERATE URL FROM PRODUCTCARD COMPONENT <Link to={`products/${props.id}`}
+//  3. CREATE THE FILE WITH THE NAME INSIDE [], e.g id is [id].jsx
+//  4. CREATE ROUTE FOR IT INSIDE YOUR APP'S ENTRY POINT <Route path="/products/:id" element={<ProductDetails />} />
+//  5. FETCH THE ID FROM THE URL const { id } = useParams();
+//  6. FETCH THE PRODUCT FROM THE ENDPOINT
+
+// const fetchProduct = async () => {
+    // try {
+    //   const response = await fetch(`https://dummyjson.com/products/${id}`);
