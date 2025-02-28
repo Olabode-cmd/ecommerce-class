@@ -15,6 +15,7 @@ import DashboardLayout from "./layout/dashboardlayout.jsx";
 
 // Dashboards
 import DashboardHome from "./pages/dashboard/index.jsx";
+import Projects from "./pages/dashboard/projects.jsx";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
@@ -31,6 +32,7 @@ ReactDOM.createRoot(root).render(
 
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<DashboardHome />} />
+        <Route path='projects' element={<Projects />} />
         {/* Add other routes here */}
       </Route>
     </Routes>

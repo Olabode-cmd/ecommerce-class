@@ -38,6 +38,8 @@ function App() {
   const recentProducts = products.slice(8, 12);
   const similarProducts = products.slice(13, 17);
 
+  // console.log(products[0].id);
+
   // if (loading) {
   //   return <p>Loading...</p>
   // }

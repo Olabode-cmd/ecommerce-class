@@ -104,7 +104,7 @@ const Login = () => {
                   </Link>
                 </div>
                 <input
-                  type={show ? "password" : "text"}
+                  type={show ? "text" : "password"}
                   className="mt-2 px-3 py-2.5 rounded-lg border border-gray-300 w-full"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

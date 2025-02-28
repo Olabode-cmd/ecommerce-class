@@ -12,7 +12,7 @@ const DashboardHome = () => {
 
     let role = user?.user.role
 
-    let token = localStorage.getItem("accessToken")
+    // let token = localStorage.getItem("accessToken")
 
     // check for token to redirect to login if it doesn't exist
     // if (!token) {

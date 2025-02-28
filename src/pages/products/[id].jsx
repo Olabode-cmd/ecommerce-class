@@ -11,6 +11,8 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
+  const [users, setUsers] = useState()
+
   // console.log(error)
 
   const fetchProduct = async () => {
@@ -18,17 +20,22 @@ const ProductDetails = () => {
       const response = await fetch(`https://dummyjson.com/products/${id}`);
       const data = await response.json();
       setProduct(data);
+      
     } catch (error) {
       setError(error);
       console.error(error);
+
+
     } finally {
       setLoading(false);
     }
   };
 
+
+  // fetchProduct();
   useEffect(() => {
     fetchProduct();
-  });
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
